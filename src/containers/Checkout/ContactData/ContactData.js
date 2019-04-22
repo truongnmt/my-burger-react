@@ -110,7 +110,7 @@ class ContactData extends Component {
     checkValidity(value, rules) {
         let isValid = false
         if (rules.required) {
-            isValid = value.trim() !== '';
+            isValid = value.trim() !== '' && isValid && isValid;
         }
 
         if (rules.minLength) {
