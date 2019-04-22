@@ -6,11 +6,11 @@ import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
     state = {
-        ingredients: null,
+        ingredients: {},
         price: 0
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         const ingredients = {};
         let price = 0;
@@ -22,7 +22,7 @@ class Checkout extends Component {
                 ingredients[param[0]] = +param[1]; // convert to number by adding "+" wtf!
             }
         }
-        this.setState({ ingredients: ingredients, totalPrice: price });
+        this.setState({ ingredients: ingredients, price: price });
     }
 
     checkoutCancelled = () => {
@@ -34,6 +34,7 @@ class Checkout extends Component {
     }
 
     render() {
+        console.log("run");
         return (
             <div>
                 <CheckoutSummary
@@ -47,7 +48,7 @@ class Checkout extends Component {
                     render={(props) => (
                         <ContactData
                             ingredients={this.state.ingredients}
-                            price={this.state.totalPrice}
+                            price={this.state.price}
                             {...props} />
                     )} />
             </div>
