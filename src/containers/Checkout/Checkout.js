@@ -34,7 +34,6 @@ class Checkout extends Component {
     }
 
     render() {
-        console.log("run");
         return (
             <div>
                 <CheckoutSummary
